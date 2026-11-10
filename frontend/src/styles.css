@@ -29,8 +29,9 @@ textarea { resize: vertical; }
 .input-suffix, .input-prefix { position: relative; }
 .input-suffix span, .input-prefix span { position: absolute; top: 50%; transform: translateY(-50%); color: #7f8985; }
 .input-suffix span { right: 15px; }
+.input-suffix input { padding-right: 58px; }
 .input-prefix span { left: 15px; font-weight: 700; }
-.input-prefix input { padding-left: 34px; }
+.input-prefix input { padding-left: 34px; padding-right: 20px; }
 fieldset { border: 0; padding: 0; margin: 0; }
 legend { margin-bottom: 12px; }
 .checks { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }

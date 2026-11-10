@@ -8,8 +8,8 @@ interface TripFormProps {
 
 export default function TripForm({ loading, onSubmit }: TripFormProps) {
   const [destination, setDestination] = useState("");
-  const [days, setDays] = useState(7);
-  const [budgetEur, setBudgetEur] = useState(1500);
+  const [days, setDays] = useState("7");
+  const [budgetEur, setBudgetEur] = useState("1500");
   const [fastWifi, setFastWifi] = useState(true);
   const [coworkingSpaces, setCoworkingSpaces] = useState(false);
   const [timeZoneOverlap, setTimeZoneOverlap] = useState(false);
@@ -21,8 +21,8 @@ export default function TripForm({ loading, onSubmit }: TripFormProps) {
     event.preventDefault();
     onSubmit({
       destination: destination.trim(),
-      days,
-      budgetEur,
+      days: Number(days),
+      budgetEur: Number(budgetEur),
       preferences: {
         fastWifi,
         coworkingSpaces,
@@ -43,11 +43,11 @@ export default function TripForm({ loading, onSubmit }: TripFormProps) {
       <div className="form-grid">
         <div className="field">
           <label htmlFor="days">Trip length</label>
-          <div className="input-suffix"><input id="days" type="number" min="1" max="60" value={days} onChange={(event) => setDays(Number(event.target.value))} required /><span>days</span></div>
+          <div className="input-suffix"><input id="days" type="number" min="1" max="60" value={days} onChange={(event) => setDays(event.target.value)} required /><span>days</span></div>
         </div>
         <div className="field">
           <label htmlFor="budget">Total budget</label>
-          <div className="input-prefix"><span>€</span><input id="budget" type="number" min="1" step="1" value={budgetEur} onChange={(event) => setBudgetEur(Number(event.target.value))} required /></div>
+          <div className="input-prefix"><span>€</span><input id="budget" type="number" min="1" step="1" value={budgetEur} onChange={(event) => setBudgetEur(event.target.value)} required /></div>
         </div>
       </div>
       <fieldset>
