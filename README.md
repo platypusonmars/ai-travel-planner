@@ -31,6 +31,26 @@ Only Caddy is exposed publicly. It reverse-proxies to nginx, which serves the Re
 
 Postgres data is persisted in the `postgres_data` Docker volume. Caddy certificates and configuration are persisted in the `caddy_data` and `caddy_config` volumes. To recreate all persistent data, run `docker compose down -v` before starting again.
 
+## Local development
+
+Start the Docker services with the explicit development configuration in one terminal. `docker-compose.dev.yml` exposes the backend only on `127.0.0.1:3000`:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
+```
+
+Then run the Vite development server in another terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173). Vite provides frontend hot reload and proxies `/api` requests to the local backend on port 3000.
+
+Plain `docker compose up` uses only the production setup, so the backend stays private.
+
 ## Deploy to a VPS
 
 1. Point your domain's DNS `A` record to the VPS public IP address.
